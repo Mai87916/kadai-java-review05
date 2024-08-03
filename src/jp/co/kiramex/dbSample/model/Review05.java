@@ -28,7 +28,7 @@ public class Review05 {
                     "ozizousan0606");
 
             // 4. DBとやりとりする窓口（PreparedStatementオブジェクト）の作成
-            String sql = "SELECT * FROM person WHERE Name = ?";    // ← 修正
+            String sql = "SELECT * FROM person WHERE name = ?";    // ← 修正
             pstmt = con.prepareStatement(sql);  // ← 修正
 
             // 5, 6. Select文の実行と結果を格納／代入
@@ -43,9 +43,9 @@ public class Review05 {
             // 7. 結果を表示する
             while (rs.next()) {
                 // Name列の値を取得
-                String name = rs.getString("Name");
+                String name = rs.getString("name");
                 // Population列の値を取得 ← 追記
-                int age = rs.getInt("Age");
+                int age = rs.getInt("age");
 
                 // 取得した値を表示
                 System.out.println(name);
