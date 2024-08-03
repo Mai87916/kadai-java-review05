@@ -28,15 +28,15 @@ public class Review05 {
                     "ozizousan0606");
 
             // 4. DBとやりとりする窓口（PreparedStatementオブジェクト）の作成
-            String sql = "SELECT * FROM person WHERE name = ?";    // ← 修正
-            pstmt = con.prepareStatement(sql);  // ← 修正
+            String sql = "SELECT * FROM person WHERE id = ?";
+            pstmt = con.prepareStatement(sql);
 
             // 5, 6. Select文の実行と結果を格納／代入
             System.out.print("検索キーワードを入力してください > ");
-            String input = keyIn();
+            int input = keyIn();
 
             // PreparedStatementオブジェクトの?に値をセット  // ← 追記
-            pstmt.setString(1, input);  // ← 追記
+            pstmt.setInt(1, input);  // ← 追記
 
             rs = pstmt.executeQuery();  // ← 修正
 
@@ -89,8 +89,8 @@ public class Review05 {
     /*
      * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列
      */
-    private static String keyIn() {
-        String line = null;
+    private static int keyIn() {
+        Int line = null;
         try {
             BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
             line = key.readLine();
