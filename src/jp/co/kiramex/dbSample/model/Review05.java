@@ -17,6 +17,7 @@ public class Review05 {
         PreparedStatement pstmt = null; // ← 修正
         ResultSet rs = null;
 
+
         try {
             // 1. ドライバのクラスをJava上で読み込む
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,10 +34,10 @@ public class Review05 {
 
             // 5, 6. Select文の実行と結果を格納／代入
             System.out.print("検索キーワードを入力してください > ");
-            int input = keyIn();
+            String input = keyIn();
 
             // PreparedStatementオブジェクトの?に値をセット  // ← 追記
-            pstmt.setInt(1, input);  // ← 追記
+            pstmt.setString(1, input);  // ← 追記
 
             rs = pstmt.executeQuery();  // ← 修正
 
@@ -86,11 +87,8 @@ public class Review05 {
         }
     }
 
-    /*
-     * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列
-     */
-    private static int keyIn() {
-        Int line = null;
+    private static String keyIn() {
+        String line = null;
         try {
             BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
             line = key.readLine();
@@ -100,4 +98,16 @@ public class Review05 {
         return line;
     }
 
-}
+    /*
+     * キーボードから入力された値をintで返す 引数：なし 戻り値：int
+     */
+    private static int keyInNum() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(keyIn());
+        } catch (NumberFormatException e) {
+        }
+        return result;
+    }
+    }
+
