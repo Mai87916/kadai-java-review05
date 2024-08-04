@@ -34,10 +34,10 @@ public class Review05 {
 
             // 5, 6. Select文の実行と結果を格納／代入
             System.out.print("検索キーワードを入力してください > ");
-            String input = keyIn();
+            int input = keyInNum();;
 
             // PreparedStatementオブジェクトの?に値をセット  // ← 追記
-            pstmt.setString(1, input);  // ← 追記
+            pstmt.setInt(1, input);  // ← 追記
 
             rs = pstmt.executeQuery();  // ← 修正
 
@@ -103,11 +103,14 @@ public class Review05 {
      */
     private static int keyInNum() {
         int result = 0;
+
         try {
             result = Integer.parseInt(keyIn());
         } catch (NumberFormatException e) {
         }
         return result;
+
+
     }
     }
 
